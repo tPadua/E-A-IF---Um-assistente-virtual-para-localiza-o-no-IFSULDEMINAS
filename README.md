@@ -1,0 +1,1 @@
+Este repositório contém um projeto Unity para criação de uma aplicação de navegação em realidade aumentada (AR). O aplicativo utiliza ARFoundation e ARKit XR Plugin para oferecer suporte a dispositivos Android e iOS.
