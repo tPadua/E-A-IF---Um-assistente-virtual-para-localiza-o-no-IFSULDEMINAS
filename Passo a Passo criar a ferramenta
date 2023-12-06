@@ -1,0 +1,442 @@
+Implementação Passo a Passo
+
+Cada etapa do tutorial em vídeo foi seguida cuidadosamente, incluindo a criação do ambiente virtual, a integração de plugins, scripts, a configuração de interações com o usuário e a incorporação de informações de localização.
+
+Etapa 1:
+Passo 1: Configurar o Projeto Unity:
+
+Abra o Unity ou Unity Hub.
+Crie um novo projeto Unity ou abra um projeto existente.
+Certifique-se de que o projeto esteja configurado para ser uma 3D Template. Para isso, vá em File > New Project, escolha a opção 3D, e clique em "Create".
+No menu "Edit", vá para "Project Settings" e, na aba "Player", selecione a plataforma Android.
+Na seção "Other Settings", defina o mínimo SDK de acordo com a versão do Android que deseja suportar (geralmente, Android 7.0 ou superior).
+Em "XR Settings", ative a opção "ARCore Supported" para habilitar o suporte ao ARCore.
+
+Passo 2: Instalar o ARFoundation e ARKit XR Plugin:
+
+No menu "Window", vá para "Package Manager".
+Na aba "In Project", pesquise por "ARFoundation" e clique em "Install" para adicionar a package ao seu projeto.
+Repita o mesmo processo para "ARKit XR Plugin". Isso permitirá que você crie aplicativos AR para dispositivos iOS usando o ARKit.
+
+Passo 3: Configurar a Cena AR:
+
+No painel de Hierarchy, exclua a câmera principal.
+No menu "GameObject", vá para "XR" e adicione um "AR Session".
+Em seguida, adicione um "AR Session Origin" (também localizado em "XR").
+Agora, você pode adicionar objetos em realidade aumentada à sua cena como quiser. Por exemplo, adicione um objeto 3D, como um cubo, para testar o rastreamento AR.
+
+Passo 4: Compilar e Executar o Aplicativo:
+
+Conecte seu dispositivo Android ao computador via USB.
+No menu "File", vá para "Build Settings".
+Selecione a plataforma Android e clique em "Switch Platform".
+Clique em "Player Settings" e configure as configurações do jogador, como nome do pacote, ícone, etc.
+Na seção "XR Settings", ative "ARCore" e "ARKit" (se necessário) como plataformas de suporte AR.
+
+Passo 5:
+
+No painel "Project", clique com o botão direito do mouse na pasta "Assets" e selecione "Create" > "Folder".
+Nomeie a nova pasta como "Textures" para armazenar a textura do mapa que você pretende adicionar.
+
+Passo 6: Adicionar a Textura do Mapa:
+
+Abra a pasta "Textures" no painel "Project".
+Arraste o arquivo de mapa para essa pasta.
+Selecione a textura do mapa na pasta "Textures".
+No painel "Inspector", encontre a seção "Texture Type" e defina-a como "Sprite".
+Clique em "Apply" para aplicar as configurações.
+
+Passo 7: Criar uma Esfera:
+
+Volte para o painel "Hierarchy".
+Clique com o botão direito na janela "Hierarchy" e escolha "3D Object" > "Sphere" para criar uma esfera na cena.
+Selecione a esfera recém-criada no painel "Hierarchy".
+
+Passo 8: Ajustar a Esfera:
+
+No painel "Inspector" da esfera, clique no botão dos três pontos (...) próximo a "Scale".
+Selecione "Reset" para redefinir a escala da esfera.
+Ajuste a escala da esfera como desejar. Por exemplo, para uma escala uniforme, você pode definir os valores de "Scale" como (0.01, 0.01, 0.01). Os valores específicos dependerão do tamanho e da forma do mapa que você está criando.
+Ajuste os valores de "Scale" X e Z conforme necessário para se adequar ao seu mapa.
+
+Passo 9: Configurar o Material do Chão:
+
+No painel "Project", selecione o material "Floor" que você criou na pasta "Materials".
+No painel "Inspector", encontre a seção "Shader" e selecione um shader apropriado para o seu projeto, como "Standard".
+Ao lado do shader, clique na área de textura que está vazia e selecione a textura do mapa que você adicionou à pasta "Textures".
+
+Passo 10: Aplicar o Material ao Objeto do Chão:
+
+Volte para o painel "Hierarchy".
+Selecione o objeto "FloorCube" na cena.
+Arraste o material "Floor" da pasta "Materials" para o objeto "FloorCube" na hierarquia. Isso aplicará o material à esfera.
+
+Passo 11: Rotacionar o Objeto do Chão:
+
+Ainda com o objeto "FloorCube" selecionado na cena, vá ao painel "Inspector."
+Na seção "Transform", encontre a rotação (Rotation).
+No eixo Y (Y Rotation), defina o valor como 180º para girar o objeto do chão 180 graus, alinhando-o como necessário.
+
+Passo 12: Criar um Objeto "Environment":
+
+Na janela "Hierarchy", clique com o botão direito e escolha "Create Empty". Nomeie o objeto criado como "Environment".
+Com o objeto "Environment" selecionado, clique no botão dos três pontos (...) na seção "Transform" no painel "Inspector" e escolha "Reset" para redefinir a posição, rotação e escala.
+
+Passo 13: Adicionar as Paredes:
+
+Dentro do objeto "Environment", crie um novo objeto vazio chamado "WallCube" da mesma maneira que você criou o "Environment".
+Configure cada "WallCube" da maneira que desejar para representar as paredes no seu ambiente. Ajuste o tamanho e a largura conforme necessário para o seu projeto.
+Nomeie cada "WallCube" de acordo com sua localização, como "WallCube1", "WallCube2", etc.
+Com os "WallCubes" selecionados, defina a posição Y para 1 no painel "Inspector" e a escala Y para 2.
+
+Passo 14: Criar um Material para as Paredes:
+
+Na pasta "Materials" no painel "Project", crie um novo material e nomeie-o "Wall."
+Na seção "Shader" do painel "Inspector", selecione "VR - SpatialMapping" e "Occlusion" como o shader para o material das paredes.
+
+Passo 15: Aplicar o Material às Paredes:
+
+Selecione todos os "WallCubes" na janela "Hierarchy."
+Arraste o material "Wall" da pasta "Materials" para os "WallCubes" na hierarquia ou no painel "Inspector" do lado direito.
+
+Passo 16: Configurar as Sombras das Paredes:
+
+Com todas as paredes selecionadas na janela "Hierarchy", vá para o painel "Inspector".
+Desative a opção "Cast Shadows" para que as paredes não emitam sombras.
+Desmarque a opção "Receive Shadows" para que as paredes não recebam sombras de outros objetos.
+
+Passo 17: Configurar o Navigation (Navegação):
+
+No menu "Windows", vá para "AI" > "Navigation" para abrir a aba de navegação.
+Na aba "Bake", clique na opção "Bake" para gerar a navegação com base nas paredes da cena.
+Ajuste o "Agent Radius" conforme necessário para definir o tamanho do agente que navegará pelo ambiente. Os valores, como 0.2 ou 0.3, podem ser usados como ponto de partida, mas ajuste de acordo com suas necessidades.
+Observe o mapa gerado na aba de navegação. A cor azul representa a área navegável. Ajuste o mapa conforme necessário para garantir que o agente possa navegar pelas áreas desejadas.
+
+Passo 18: Criar um Objeto "Cube" como Destino:
+
+Volte para a janela "Hierarchy".
+Crie um novo objeto vazio chamado "Cube" para representar o destino ou alvo ao qual deseja navegar.
+No painel "Inspector", defina a escala (Scale) do objeto "Cube" para X, Y e Z como 0.2, para ajustar o tamanho do objeto.
+
+Passo 19: Criar um Material para o "Cube":
+
+Na pasta "Materials" no painel "Project", crie um novo material e nomeie-o como "Target" ou outro nome de sua preferência.
+Configure a cor do material conforme desejar para representar o destino.
+
+Passo 20: Aplicar o Material ao "Cube":
+
+Arraste o material "Target" da pasta "Materials" para o objeto "Cube" na hierarquia ou no painel "Inspector".
+
+Passo 21: Renomear o "Cube" para "TargetCube" e Criar um Objeto "Indicator":
+
+No painel "Hierarchy", renomeie o objeto "Cube" para "TargetCube".
+Crie um novo objeto vazio na hierarquia e nomeie-o como "Indicator".
+
+Passo 22: Adicionar uma Esfera ao "Indicator":
+
+Selecione o objeto "Indicator" na hierarquia.
+Crie um novo objeto em sua hierarquia e nomeie-o como "IndicatorSphere".
+Crie um novo material na pasta "Materials" e nomeie-o como "Indicator".
+Defina a cor desejada para o material "Indicator".
+Arraste o material "Indicator" para o objeto "IndicatorSphere" no painel "Inspector."
+Defina a escala (Scale) do objeto "IndicatorSphere" para X, Y e Z como 0.3.
+Na seção "Transform", ajuste a posição (Position) do objeto "IndicatorSphere" em Y para 1.
+
+Passo 23: Configurar o "Indicator" e o "IndicatorSphere":
+
+Selecione o objeto "Indicator" na hierarquia.
+No painel "Inspector," clique em "Add Component" para adicionar um novo componente.
+Procure por "Position Constraint" e selecione-o.
+Certifique-se de que a opção "Is Active" está marcada no componente "Position Constraint".
+Clique no botão "Constraint Settings" para configurar o constraint.
+Desmarque a opção "Y" no painel "Constraint Settings" para que a posição Y do objeto "Indicator" não seja afetada.
+Na seção "Sources", clique no botão "+" para adicionar uma fonte.
+Selecione "AR Session Origin" na hierarquia e, em seguida, clique na seta para baixo para expandir suas opções.
+Arraste a "AR Camera" para a seção "Sources" para vincular a câmera AR como a fonte de posição para o objeto "Indicator".
+
+Passo 24: Adicionar um Line Renderer ao "Indicator":
+
+Selecione o objeto "Indicator" na hierarquia.
+No painel "Inspector", clique em "Add Component".
+Digite "Line Renderer" e selecione o componente "Line Renderer" quando ele aparecer na lista.
+
+Passo 25: Criar um Material para a Linha:
+
+No painel "Project", crie um novo material chamado "Line".
+Defina a cor desejada para a linha no material "Line".
+
+Passo 26: Configurar o Line Renderer:
+
+No painel "Inspector" do objeto "Indicator", localize a seção "Line Renderer".
+Clique na caixa de seleção "Materials" e arraste o material "Line" que você criou anteriormente para a lista de materiais disponíveis.
+Na seção "Positions", clique no ponto vermelho e arraste-o para baixo até que fique na posição (0.000, 0.1).
+Certifique-se de que a seção "Positions" esteja definida como (0, 0, 0) para o início da linha e (0, 0, 0) para o fim da linha.
+Desça até a seção "Lighting" e desative a opção "Cast Shadows."
+Certifique-se de desmarcar a opção "Receive Shadows" para que a linha não receba sombras.
+
+Passo 27: Configurar a Câmera "TopDownCamera":
+
+Crie um novo objeto vazio na hierarquia e nomeie-o "TopDownCamera".
+Selecione o objeto "TopDownCamera" e, no painel "Inspector," defina a rotação (Rotation) X como 90º.
+Em "Position", ajuste a posição Y para 5 ou conforme desejado.
+Em "Projection", selecione a opção "Orthographic."
+Em "Size," defina um valor, por exemplo, 1.
+
+Passo 28: Criar um Render Texture para o MiniMap:
+
+Crie uma nova pasta na pasta "Assets" chamada "RenderTextures".
+Dentro da pasta "RenderTextures", crie um novo "Render Texture" e nomeie-o como "MiniMap."
+
+Passo 29: Configurar o Target Texture para a Câmera "TopDownCamera":
+
+Selecione o objeto "TopDownCamera" na hierarquia.
+No painel "Inspector", localize a seção "Target Texture".
+Arraste o "Render Texture" chamado "MiniMap" para a opção "Target Texture" no painel "Inspector" da câmera.
+
+Passo 30: Configurar as Camadas (Layers) para o "Floor" e "Wall":
+
+Selecione o objeto "Floor".
+No painel "Inspector," vá para a seção "Layer" e clique em "Add Layer."
+No novo campo que aparece, defina "Layer 8" como "Floor" e "Layer 9" como "Wall".
+
+Passo 31: Configurar a Culling Mask da Câmera "AR Camera":
+
+Selecione o objeto "AR Camera" na hierarquia.
+No painel "Inspector," vá para a seção "Culling Mask".
+Desmarque as opções "Floor" e "Wall" para que a câmera não renderize essas camadas.
+
+Passo 32: Criar um Objeto "Raw Image" para o MiniMap:
+
+No painel "Hierarchy", clique com o botão direito e vá em "UI" > "Raw Image" para criar um objeto de imagem bruta.
+Renomeie o objeto para "MiniMapCanvas".
+
+Passo 33: Configurar o "MiniMapCanvas":
+
+Selecione o objeto "RawImage" que está anexado ao "MiniMapCanvas".
+No canto superior esquerdo da janela "Scene," vá para a opção "Free Aspect" e selecione "1920x1080 Portrait" para definir a resolução do minimapa.
+No painel "Inspector", vá para a seção "Rect Transform".
+Ajuste os valores de "Width" e "Height" para definir o tamanho ideal do minimapa.
+Clique no quadrado abaixo do centro (Pivot) e selecione a opção que alinha o objeto entre o centro e a parte inferior, como você mencionou.
+Ajuste a posição Y (Position Y) conforme desejado, de preferência abaixo da câmera.
+Desmarque a opção "Raycast Target" que fica abaixo do "RawImage".
+
+Passo 34: Criar uma Pasta "Script" e um Novo Script "SetNavigationTarget":
+
+No painel "Project," crie uma nova pasta chamada "Scripts."
+Dentro da pasta "Scripts," crie um novo script chamado "SetNavigationTarget".
+
+Passo 35: Anexar o Script ao "Indicator":
+
+Abra o script "SetNavigationTarget" no Unity.
+Copie e cole o código C# anexado abaixo na janela do script.
+SetNavigationTarget
+Salve o script.
+Selecione o objeto "Indicator" na hierarquia.
+No painel "Inspector," clique em "Add Component."
+Arraste o script "SetNavigationTarget" da pasta "Scripts" para o "New Component" no objeto "Indicator."
+
+Passo 36: Configurar as Camadas para "Floor" e "Wall" nos Objetos:
+
+Selecione o objeto "FloorCube" na hierarquia.
+No painel "Inspector", vá para a seção "Layer" e selecione a opção "Floor" para definir a camada do chão.
+Selecione todos os objetos "WallCube" na hierarquia.
+No painel "Inspector," vá para a seção "Layer" e selecione a opção "Wall" para definir a camada das paredes.
+
+Passo 37: Ajustar o Cenário Conforme Necessário:
+
+Ajuste o cenário, a escala e a disposição dos objetos, bem como suas configurações, conforme necessário para atender às necessidades específicas do seu projeto.
+
+Etapa 2:
+Passo 1: Renomear "Environment" para "NavigationArea":
+
+Selecione o objeto vazio chamado "Environment" na hierarquia.
+Renomeie-o para "NavigationArea".
+
+Passo 2: Criar um Objeto "Environment" Dentro de "NavigationArea":
+
+Crie um novo objeto vazio e nomeie-o como "Environment."
+Anexe o objeto "NavigationArea" dentro de "Environment."
+
+Passo 3: Criar um Objeto "NavigationTargets":
+
+Crie um novo objeto vazio e nomeie-o como "NavigationTargets".
+Anexe o objeto "CubeTarget" dentro de "NavigationTargets".
+
+Passo 4: Criar Cubos para Representar Salas:
+
+Faça cópias do objeto "CubeTarget" conforme necessário para representar as salas.
+Nomeie cada cópia de acordo com a sala que ela representa.
+Posicione cada cubo na sala correspondente.
+
+Passo 5: Configurar a Camada "Indicator" para o "IndicatorSphere":
+
+Selecione o objeto "Indicator" na hierarquia.
+No painel "Inspector," encontre o objeto "IndicatorSphere" e vá até a seção "Layer."
+Clique em "Add Layer" e crie uma nova camada chamada "Indicator" e selecione-a.
+
+Passo 6: Configurar o "IndicatorSphere" na Câmera "TopDownCamera":
+
+Selecione o objeto "Indicator" na hierarquia.
+No painel "Inspector," certifique-se de que o "IndicatorSphere" está selecionado como a opção "TopDownCamera" na seção "Culling Mask."
+Verifique se a opção "Indicator" está desmarcada na câmera "AR Camera".
+
+Passo 7: Renomear o "MiniMapCanvas" para "ApplicationCanvas":
+
+Selecione o objeto "MiniMapCanvas" na hierarquia.
+Renomeie-o para "ApplicationCanvas".
+
+Passo 8: Criar um Botão de Alternância de Visibilidade da Linha:
+
+No objeto "ApplicationCanvas", clique com o botão direito e vá em "UI" > "Button - TextMeshPro".
+Nomeie o botão como "ToggleLineVisibilityButton".
+No botão "ToggleLineVisibilityButton", vá para o quadrado abaixo do centro no painel "Inspector."
+Mantenha a tecla "Alt" pressionada e selecione a opção "Button Center" para alinhar o botão.
+Ajuste o tamanho e a posição do botão conforme desejado.
+No componente "TextMeshPro", defina o tamanho ideal de texto no campo "Size" e insira o texto desejado para o botão, que mostrará ou ocultará a linha quando clicado.
+
+Passo 9: Criar um Dropdown para Selecionar Salas:
+
+No objeto "ApplicationCanvas", clique com o botão direito e vá em "UI" > "Dropdown - TextMeshPro."
+Nomeie o dropdown como "NavigationTargetDropDown".
+No dropdown "NavigationTargetDropDown", vá para o quadrado abaixo do centro no painel "Inspector."
+Mantenha a tecla "Alt" pressionada e selecione a opção "Button Center" para alinhar o dropdown.
+Posicione o dropdown de acordo com suas preferências para mostrar as opções das salas.
+Na seção "Options" do dropdown, insira os nomes das salas que você deseja localizar.
+Clique na seta do "NavigationTargetDropDown" e vá para "Label" para ajustar o tamanho do rótulo.
+Configure o "Width" e "Height" para definir o tamanho ideal para as opções do dropdown.
+
+Passo 10: Configurar o Dropdown "NavigationTargetDropDown":
+
+Selecione o objeto "NavigationTargetDropDown" na hierarquia.
+No painel "Inspector," vá até "Template," "Viewport," e "Content."
+Aumente a altura (Height) do "Content" para 300 para acomodar as opções do dropdown.
+Vá até "Item" e aumente a altura do "Item Checkmark" para 100.
+Clique em "Item Label" e ajuste o tamanho (Size) para 35 ou conforme desejar para as opções do dropdown.
+
+Passo 11: Atualizar e Criar Scripts:
+
+Dentro da pasta "Scripts," atualize os scripts de acordo com as instruções fornecidas. Os scripts necessários são "Target" e uma atualização para o "SetNavigationTarget."
+Target.cs
+SetNavigationTarget
+
+Passo 12: Configurar o Botão "ToggleLineVisibilityButton":
+
+Selecione o objeto "ToggleLineVisibilityButton" na hierarquia.
+No painel "Inspector", vá até "OnClick" e clique no botão "+" para adicionar um novo evento.
+Arraste o objeto "Indicator" para o campo "Object" do evento.
+No campo "No Function," clique e selecione "SetNavigationTarget" e, em seguida, escolha a opção "ToggleVisibility."
+
+Passo 13: Configurar o Dropdown "NavigationTargetDropDown":
+
+Selecione o objeto "NavigationTargetDropDown" na hierarquia.
+Vá até "On Value Changed" no painel "Inspector."
+Arraste o objeto "Indicator" para o campo "Object."
+No campo "No Function," clique e selecione "SetNavigationTarget" e, em seguida, escolha a opção "SetCurrentNavigationTarget."
+
+Passo 14: Vincular Salas ao "Indicator":
+
+Selecione o objeto "Indicator" na hierarquia.
+Desça até a seção do script no painel "Inspector."
+Encontre o campo "NavigationTargetDropDown" e arraste o objeto "NavigationTargetDropDown" para vinculá-lo.
+Crie as opções das salas no "NavigationTargetObjects" e para cada opção, arraste o cubo correspondente que representa a sala para vinculá-lo à opção.
+
+Etapa 3:
+
+Passo 1: Configurar o Painel de Opções de Linha:
+
+No objeto "ApplicationCanvas", clique com o botão direito e vá em "UI" > "Panel" para criar um painel.
+Nomeie o painel como "LineOptionsPanel."
+Selecione o botão "ToggleLineVisibilityButton" e o dropdown "NavigationTargetDropDown" e arraste-os para dentro do "LineOptionsPanel."
+No "LineOptionsPanel", clique no quadrado abaixo da opção "Stretch" no painel "Inspector."
+Mantenha a tecla "Alt" pressionada e selecione a opção "Stretch Bottom."
+Ajuste a posição Y (Pos Y) e a altura (Height) de acordo com as preferências e requisitos do seu projeto.
+
+Passo 2: Configurar o Botão de Opções de Linha:
+
+Duplique o botão "ToggleLineVisibilityButton" e renomeie-o para "LineOptionsButton."
+Ajuste a posição X (Pos X) e a posição Y (Pos Y) conforme desejado.
+Clique na seta no "LineOptionsButton" e vá até a seção "Text."
+Insira o texto que deseja para esse botão.
+
+Passo 3: Configurar Botões de Opções de Depuração:
+
+Duplique o "LineOptionsButton" e renomeie-o para "LineDebugButton".
+Ajuste a posição X (Pos X) e a posição Y (Pos Y) de acordo com as preferências.
+Personalize o texto no botão como desejar.
+
+Passo 4: Configurar o Painel de Opções de Depuração:
+
+Duplique o "LineOptionsPanel" e renomeie-o para "DebugOptionsPanel".
+Selecione o "DebugOptionsPanel" e vá para a seção "OnClick" no painel "Inspector."
+Clique no botão "+" para adicionar um evento.
+Arraste o "DebugOptionsPanel" para o campo "Object."
+Em "No Function," clique em "GameObject" e selecione a opção "SetActive." Marque a caixa que aparecerá abaixo.
+
+Passo 5: Configurar o Botão de Desativação do Painel de Opções de Linha:
+
+Selecione o "LineOptionsButton".
+Vá para a seção "OnClick" no painel "Inspector."
+Clique no botão "+" para adicionar um evento.
+Arraste o "DebugOptionsPanel" para o campo "Object."
+Em "No Function," clique em "GameObject" e selecione a opção "SetActive". Desmarque a caixa que aparecerá abaixo.
+
+Passo 6: Configurar o TextMeshPro para Exibir a Altura da Linha:
+
+No "DebugOptionsPanel", crie um objeto "UI" > "TextMeshPro".
+Nomeie o objeto como "Line Height".
+Ajuste o tamanho do texto no campo "Size".
+Em "Alignment", alinhe o texto no centro.
+
+Passo 7: Criar um Slider para Ajustar a Altura da Linha:
+
+No "DebugOptionsPanel", crie um objeto "UI" > "Slider."
+Nomeie o slider como "YOffsetSlider".
+Ajuste o tamanho do slider e defina a rotação Z como 90°.
+No campo "Direction", selecione "Bottom to Top."
+Configure os valores mínimos e máximos conforme desejado.
+
+Passo 8: Atualizar os Scripts "SetNavigationTarget" e "Target":
+
+Dentro da pasta "Scripts," atualize os scripts "SetNavigationTarget" e "Target" conforme necessário, de acordo com as suas orientações.
+SetNavigationTarget
+Target
+
+Passo 9: Vincular o Slider "YOffsetSlider" ao Indicador:
+
+Selecione o objeto "Indicator" na hierarquia.
+
+No painel "Inspector," desça até a seção do script.
+
+Encontre o campo "Navigation YOffset" e arraste o objeto "YOffsetSlider" para anexá-lo.
+
+Passo 10: Configurar Material Transparente para o Chão:
+
+Duplique o objeto "FloorCube" dentro de "NavigationArea".
+Renomeie o duplicado como "FloorCubeMaterial".
+No painel "Assets," crie um novo material chamado "transparent".
+No material "transparent," configure a opção "Rendering Mode" como "Transparent."
+Ajuste a cor do albedo de acordo com sua preferência.
+Desmarque a opção "Reflections" no material "transparent."
+Arraste o material "transparent" para o objeto "FloorCubeMaterial".
+Ajuste a posição Y (Position Y) do "FloorCubeMaterial" para -1.
+
+Passo 11: Criar um Novo Script "SetUiText":
+
+Crie um novo script chamado "SetUiText"
+SetUiText
+
+Passo 12: Configurar o "SetUiText" no TextMeshPro:
+
+Selecione o objeto "DebugOptionsPanel".
+No componente "TextMeshPro", arraste o script "SetUiText" para o campo "Text Field".
+No campo "UI Text", insira o texto "Line Height".
+
+Passo 13: Configurar o Slider "YOffsetSlider" para Atualizar a Altura da Linha:
+
+Selecione o objeto "YOffsetSlider".
+No painel "Inspector," vá para a seção "On Value Changed."
+Clique no botão "+" para adicionar um evento.
+Arraste o objeto "DebugOptionsPanel" para o campo "Object."
+Em "No Function," clique em "SetUiText" e selecione a opção "OnSliderValueChanged".
+
+Agora, você concluiu a Etapa 3 do seu projeto, que envolve a configuração de opções de linha, depuração e ajustes de altura da linha. Certifique-se de que os scripts estejam atualizados de acordo com suas necessidades específicas e que todas as configurações tenham sido feitas conforme suas orientações.
