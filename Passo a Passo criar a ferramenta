@@ -223,11 +223,13 @@ Desmarque a opção "Raycast Target" que fica abaixo do "RawImage".
 Passo 34: Criar uma Pasta "Script" e um Novo Script "SetNavigationTarget":
 
 No painel "Project," crie uma nova pasta chamada "Scripts."
+(TODOS OS SCRIPTS ESTÃO DENTRO DA PASTA SCRIPTS)
 Dentro da pasta "Scripts," crie um novo script chamado "SetNavigationTarget".
 
 Passo 35: Anexar o Script ao "Indicator":
 
 Abra o script "SetNavigationTarget" no Unity.
+(TODOS OS SCRIPTS ESTÃO DENTRO DA PASTA SCRIPTS)
 Copie e cole o código C# anexado abaixo na janela do script.
 SetNavigationTarget
 Salve o script.
@@ -316,6 +318,7 @@ Clique em "Item Label" e ajuste o tamanho (Size) para 35 ou conforme desejar par
 Passo 11: Atualizar e Criar Scripts:
 
 Dentro da pasta "Scripts," atualize os scripts de acordo com as instruções fornecidas. Os scripts necessários são "Target" e uma atualização para o "SetNavigationTarget."
+(TODOS OS SCRIPTS ESTÃO DENTRO DA PASTA SCRIPTS)
 Target.cs
 SetNavigationTarget
 
@@ -423,6 +426,7 @@ Ajuste a posição Y (Position Y) do "FloorCubeMaterial" para -1.
 Passo 11: Criar um Novo Script "SetUiText":
 
 Crie um novo script chamado "SetUiText"
+(TODOS OS SCRIPTS ESTÃO DENTRO DA PASTA SCRIPTS)
 SetUiText
 
 Passo 12: Configurar o "SetUiText" no TextMeshPro:
